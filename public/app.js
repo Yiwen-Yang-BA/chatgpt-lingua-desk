@@ -82,6 +82,7 @@ $("#translate-form").onsubmit = async (e) => {
   e.preventDefault();
   if (pending || importing) return;
   pending = true;
+  $("#translation").readOnly = true;
   busy($("#translate"), true, "正在逐段翻译…");
   [...fields, "mode", "sample", "srt-sample", "file"].forEach(
     (f) => ($("#" + f).disabled = true),
@@ -110,6 +111,7 @@ $("#translate-form").onsubmit = async (e) => {
     toast(err.message, true);
   } finally {
     pending = false;
+    $("#translation").readOnly = false;
     busy($("#translate"), false);
     [...fields, "mode", "sample", "srt-sample", "file"].forEach(
       (f) => ($("#" + f).disabled = false),
