@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="让文本、术语与字幕时间轴各就其位。在同一个工作台，完成翻译、对照和导出。"
+    />
+    <title>Lingua Desk · AI 小工具</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <div class="brand"><span class="logo">文</span>Lingua Desk</div>
+        <div class="side-intro">
+          <div class="eyebrow">PERSONAL AI WORKSPACE</div>
+          <div class="nav-item">翻译与字幕</div>
+        </div>
+        <div class="side-note">
+          把一个想法，变成可以使用的结果。<br />轻量、专注，按你的节奏。
+        </div>
+        <div class="side-bottom">
+          <div class="eyebrow">CONNECTION</div>
+          <label
+            ><span class="sr-only" hidden>运行模式</span
+            ><select id="mode" aria-label="运行模式"></select
+          ></label>
+        </div>
+        <div class="side-footer">
+          INDEPENDENT EDITION / 05<br />Built for a little more clarity.
+        </div>
+      </aside>
+      <main class="main">
+        <header class="topbar">
+          <span class="crumb">我的工作台 &nbsp; / &nbsp; 翻译与字幕</span
+          ><span class="top-meta"
+            ><i class="dot"></i><span id="connection">正在连接…</span></span
+          >
+        </header>
+        <section class="hero">
+          <div class="eyebrow">SAY IT WELL. IN ANOTHER LANGUAGE.</div>
+          <h1>换一种语言，保留本意。</h1>
+          <p class="description">
+            让文本、术语与字幕时间轴各就其位。在同一个工作台，完成翻译、对照和导出。
+          </p>
+        </section>
+        <section class="panel" style="margin-bottom: 22px">
+          <div class="grid3">
+            <label
+              >原文语言<select id="source">
+                <option value="auto">自动识别</option>
+                <option>English</option>
+                <option>中文</option>
+                <option>日本語</option>
+              </select></label
+            ><label
+              >目标语言<select id="target">
+                <option>简体中文</option>
+                <option>English</option>
+                <option>日本語</option>
+                <option>Deutsch</option>
+                <option>Français</option>
+              </select></label
+            ><label
+              >表达风格<select id="tone">
+                <option value="natural">自然流畅</option>
+                <option value="formal">正式书面</option>
+                <option value="literal">贴近原文</option>
+              </select></label
+            >
+          </div>
+        </section>
+        <section class="workspace">
+          <form id="translate-form" class="panel">
+            <div class="panel-head">
+              <h2>原文</h2>
+              <div class="row">
+                <button id="sample" type="button" class="small">文本示例</button
+                ><button id="srt-sample" type="button" class="small">
+                  字幕示例
+                </button>
+              </div>
+            </div>
+            <label
+              >内容类型<select id="format">
+                <option value="text">普通文本</option>
+                <option value="srt">SRT 字幕 · 保留时间轴</option>
+              </select></label
+            ><label
+              >原始内容<textarea
+                id="text"
+                rows="12"
+                maxlength="15000"
+                required
+                placeholder="粘贴需要翻译的内容…"
+              ></textarea>
+            </label>
+            <div class="row">
+              <input
+                type="file"
+                id="file"
+                accept=".txt,.srt"
+                aria-label="导入 TXT 或 SRT"
+              /><button type="button" id="save-draft" class="small">
+                保存草稿
+              </button>
+            </div>
+            <details>
+              <summary>术语表：让专有名词保持一致</summary>
+              <textarea
+                id="glossary"
+                rows="4"
+                maxlength="3000"
+                placeholder="workspace = 工作区&#10;privacy = 隐私"
+              ></textarea>
+            </details>
+            <button id="translate" class="primary">开始翻译 ↗</button>
+          </form>
+          <section class="panel">
+            <div class="panel-head">
+              <h2>译文</h2>
+              <span class="number">TRANSLATION</span>
+            </div>
+            <div id="empty" class="empty">
+              <div class="symbol">Aa</div>
+              <h3>留住语言之间的细节</h3>
+              <p>演示模式可体验流程；完整翻译请切换真实模型。</p>
+            </div>
+            <div id="output" hidden>
+              <div id="meta" class="meta"></div>
+              <div id="warnings" class="hint"></div>
+              <label
+                >可编辑的最终译文<textarea
+                  id="translation"
+                  rows="15"
+                ></textarea>
+              </label>
+              <div class="toolbar">
+                <button id="download" class="primary">下载译文</button
+                ><button id="copy" class="small">复制</button
+                ><button id="bilingual" class="small">双语对照</button>
+              </div>
+              <p class="hint">
+                双语对照导出模型原始分段；手工编辑仅影响最终译文下载。
+              </p>
+            </div>
+          </section>
+          <section class="panel full">
+            <div class="panel-head">
+              <h2>逐段对照</h2>
+              <span id="segment-count" class="number">SIDE BY SIDE</span>
+            </div>
+            <div id="segments" class="stack">
+              <p class="muted">翻译完成后可逐段核对。</p>
+            </div>
+          </section>
+        </section>
+        <footer class="footer">
+          <span>Lingua Desk · 独立轻量实现</span
+          ><span
+            >灵感来自
+            <a
+              href="https://github.com/nextai-translator/nextai-translator"
+              target="_blank"
+              rel="noopener noreferrer"
+              >nextai-translator/nextai-translator</a
+            >
+            &nbsp; / &nbsp; 05 OF 10</span
+          >
+        </footer>
+      </main>
+    </div>
+    <div id="toast" role="status" aria-live="polite" hidden></div>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

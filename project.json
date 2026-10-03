@@ -1,0 +1,32 @@
+{
+  "id": "chatgpt-lingua-desk",
+  "title": "Lingua Desk",
+  "number": 5,
+  "port": 3105,
+  "symbol": "文",
+  "nav": "翻译与字幕",
+  "eyebrow": "SAY IT WELL. IN ANOTHER LANGUAGE.",
+  "headline": "换一种语言，保留本意。",
+  "description": "让文本、术语与字幕时间轴各就其位。在同一个工作台，完成翻译、对照和导出。",
+  "features": [
+    "五种目标语言与自然/正式/直译风格",
+    "逐段双语对照和自定义术语表",
+    "SRT 编号、时间轴与字幕段落保留",
+    "TXT/SRT 导入、译文编辑、双语 Markdown 导出"
+  ],
+  "steps": [
+    "粘贴文字或导入 TXT/SRT，选择源语言和目标语言。",
+    "用「原词 = 译词」填写术语表，一行一项。",
+    "开始翻译，查看逐段对照与术语检查提醒。",
+    "可编辑最终译文，导出 TXT/SRT 或原始逐段双语对照 Markdown。"
+  ],
+  "source": {
+    "name": "nextai-translator/nextai-translator",
+    "url": "https://github.com/nextai-translator/nextai-translator",
+    "stars": 24996,
+    "pushed": "2026-09-03",
+    "license": "AGPL-3.0"
+  },
+  "scope": "复刻 NextAI Translator 的翻译与术语控制核心功能，并增加轻量 SRT 处理。没有桌面取词、OCR、浏览器扩展或语音合成。离线演示仅展示已内置的少量样例，其余内容明确标为原文预览；真实翻译须配置 API。",
+  "storage": "当前草稿及术语表可手动保存到浏览器本地；翻译结果仅保留在当前页面，需及时导出。"
+}
